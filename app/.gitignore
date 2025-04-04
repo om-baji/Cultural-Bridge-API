@@ -1,0 +1,7 @@
+chroma/
+chroma_db/
+*.chroma
+
+.env
+.env*
+.*env
