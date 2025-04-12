@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes.story_router import router
+from app.routes.rpg_router import rpg_router
 
 app = FastAPI(title="Story Generator API", version="1.0")
 
@@ -13,6 +14,7 @@ app.add_middleware(
 )
 
 app.include_router(router, prefix="/api/v1", tags=["story"])
+app.include_router(rpg_router, prefix="/api/v1", tags=["role playing"])
 
 @app.get("/")
 async def root():

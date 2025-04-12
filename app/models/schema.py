@@ -1,4 +1,4 @@
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 
 from pydantic import Field, BaseModel, field_validator
 
@@ -27,6 +27,15 @@ class Response(BaseModel):
     message: str
     timestamp: str
 
+class RolePlayRequest(BaseModel):
+    culture: str
+    role: str
+    era: str
+    tone: str
+    language: str
+    include_emotion: bool
+    chat_history: List[Dict[str, str]]  # [{"user": "Hi!", "ai": "Hello, traveler!"}, ...]
+    user_input: str  # current user message
 
 class SearchQuery:
     pass
