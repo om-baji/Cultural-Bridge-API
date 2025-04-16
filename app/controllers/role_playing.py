@@ -5,7 +5,7 @@ import asyncio
 from dotenv import load_dotenv
 import datetime
 
-from app.models.schema import RolePlayRequest, StoryResponse
+from app.schemas.schema import RolePlayRequest, StoryResponse
 from app.db.singleton import ChromaDBSingleton
 
 load_dotenv()

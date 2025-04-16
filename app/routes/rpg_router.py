@@ -1,7 +1,7 @@
 from typing import Any
 
 from app.controllers.role_playing import generate_role_play, get_model_client
-from app.models.schema import StoryResponse, RolePlayRequest
+from app.schemas.schema import StoryResponse, RolePlayRequest
 from fastapi import APIRouter, Depends
 
 rpg_router = APIRouter()

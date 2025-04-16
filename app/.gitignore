@@ -5,3 +5,5 @@ chroma_db/
 .env
 .env*
 .*env
+
+models

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from app.controllers.story import get_model_client, add_story, generate_story
-from app.models.schema import StoryResponse, StoryRequest, Response
+from app.schemas.schema import StoryResponse, StoryRequest, Response
 
 router = APIRouter()
 

@@ -1,9 +1,16 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from pathlib import Path
 from app.routes.story_router import router
 from app.routes.rpg_router import rpg_router
+from app.routes.conflict_router import conflict_router
+from app.routes.debate_router import debaterouter
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Story Generator API", version="1.0")
+
+templates = Jinja2Templates(directory="C:/Users/0m/PycharmProjects/EDAI-4/app/templates")
 
 app.add_middleware(
     CORSMiddleware,
@@ -14,11 +21,13 @@ app.add_middleware(
 )
 
 app.include_router(router, prefix="/api/v1", tags=["story"])
-app.include_router(rpg_router, prefix="/api/v1", tags=["role playing"])
+app.include_router(rpg_router, prefix="/api/v1", tags=["Role Playing"])
+app.include_router(conflict_router, prefix="/api/v1", tags=["Conflict Resolution"])
+app.include_router(debaterouter, prefix="/api/v1", tags=["Debate Mode"])
 
-@app.get("/")
-async def root():
-    return {"message": "Welcome to the Story Generator API!"}
+@app.get("/", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
 
 if __name__ == "__main__":
     import uvicorn

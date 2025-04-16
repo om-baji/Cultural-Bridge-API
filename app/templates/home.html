@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Cultural Bridge Game | AI-Powered Cultural Empathy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #10b981 0%, #a3e635 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hover-scale {
+        transition: transform 0.2s ease-in-out;
+      }
+      .hover-scale:hover {
+        transform: scale(1.03);
+      }
+      .api-card {
+        border-left: 4px solid #10b981;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-950 text-white">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-emerald-600 to-lime-500 p-6 shadow-lg sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h1 class="text-3xl md:text-4xl font-extrabold text-white">
+            🌐 Cultural Bridge Game
+          </h1>
+          <p class="text-emerald-50 text-sm md:text-base">
+            Empathy through AI-powered storytelling & decisions
+          </p>
+        </div>
+        <nav class="flex space-x-3">
+          <a href="#api" class="text-white bg-emerald-700 hover:bg-emerald-800 px-4 py-2 rounded-md font-semibold transition">
+            🔌 API
+          </a>
+          <a href="/docs" class="text-white bg-lime-600 hover:bg-lime-700 px-4 py-2 rounded-md font-semibold transition">
+            📄 Documentation
+          </a>
+          <a href="/health" class="text-black bg-white hover:bg-gray-100 px-4 py-2 rounded-md font-semibold transition">
+            ❤️ Health
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-950 to-gray-900">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          <span class="gradient-text">Build Empathy</span> Through Cultural Understanding
+        </h2>
+        <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-10">
+          An AI-powered platform that simulates cultural interactions, historical events, and global perspectives to foster empathy and cross-cultural understanding.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="/docs/getting-started" class="bg-gradient-to-r from-emerald-600 to-lime-500 text-white px-8 py-3 rounded-lg font-bold hover:opacity-90 transition shadow-lg">
+            Get Started →
+          </a>
+          <a href="#demo" class="bg-gray-800 text-white px-8 py-3 rounded-lg font-bold hover:bg-gray-700 transition border border-gray-700">
+            Try Demo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main -->
+    <main class="max-w-6xl mx-auto px-4 py-16 space-y-24">
+      <!-- About -->
+      <section class="text-center">
+        <h2 class="text-3xl font-bold gradient-text inline-block mb-6">🚀 About the Project</h2>
+        <p class="text-gray-300 text-lg max-w-3xl mx-auto">
+          <strong>The Cultural Bridge Game</strong> simulates cultural conversations, debates, and historical events using AI—designed to promote empathy, global understanding, and decision-making from multiple perspectives. Our platform helps educators, diplomats, and curious minds explore the rich tapestry of human culture.
+        </p>
+      </section>
+
+      <!-- Features -->
+      <section>
+        <h2 class="text-3xl font-bold gradient-text text-center mb-12">🔍 Key Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Feature
+            icon="🌍"
+            title="AI Cultural Storytelling"
+            desc="Dynamic narratives based on historical events, language nuances, and cultural traditions from around the world."
+          />
+          <Feature
+            icon="🕊️"
+            title="Conflict Resolution Mode"
+            desc="Simulate real-world cultural tensions and practice resolving them through dialogue, compromise, and understanding."
+          />
+          <Feature
+            icon="🎭"
+            title="Role-Playing Simulations"
+            desc="Step into the shoes of individuals from diverse cultural backgrounds, historical periods, or contemporary settings."
+          />
+          <Feature
+            icon="⚖️"
+            title="AI Debates"
+            desc="Engage in moderated debates on controversial global issues with AI characters representing different cultural viewpoints."
+          />
+          <Feature
+            icon="📊"
+            title="Impact Tracker"
+            desc="Visualize how your decisions affect diplomatic relations, societal harmony, and media perception across cultures."
+          />
+          <Feature
+            icon="📡"
+            title="API-Driven Architecture"
+            desc="Fully ready for integration with external data sources, dynamic content generation, and enterprise scalability."
+          />
+        </div>
+      </section>
+
+      <!-- API Documentation Section -->
+      <section id="api" class="bg-gray-900 rounded-xl p-8 shadow-xl border border-gray-800">
+        <h2 class="text-3xl font-bold gradient-text mb-8">🔌 API Endpoints</h2>
+        <p class="text-gray-300 mb-8">
+          Our comprehensive API allows you to integrate cultural simulations into your own applications.
+          <a href="/docs/api" class="text-lime-400 underline hover:text-lime-300">View full API documentation →</a>
+        </p>
+
+        <div class="space-y-6">
+          <!-- API Endpoint Cards -->
+          <div class="api-card bg-gray-800 p-6 rounded-lg hover-scale">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">GET /api/scenarios</h3>
+                <p class="text-gray-300">Retrieve available cultural scenarios and simulations</p>
+              </div>
+              <span class="bg-emerald-900 text-emerald-300 px-3 py-1 rounded text-sm">GET</span>
+            </div>
+            <div class="mt-4 text-sm text-gray-400">
+              <p>Returns: List of scenarios with metadata, difficulty levels, and cultural regions</p>
+              <a href="/docs/api/scenarios" class="text-lime-400 text-xs mt-2 inline-block hover:underline">View documentation →</a>
+            </div>
+          </div>
+
+          <div class="api-card bg-gray-800 p-6 rounded-lg hover-scale">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">POST /api/simulation/start</h3>
+                <p class="text-gray-300">Initialize a new cultural simulation session</p>
+              </div>
+              <span class="bg-lime-900 text-lime-300 px-3 py-1 rounded text-sm">POST</span>
+            </div>
+            <div class="mt-4 text-sm text-gray-400">
+              <p>Accepts: Scenario ID, participant info, configuration options</p>
+              <a href="/docs/api/simulation" class="text-lime-400 text-xs mt-2 inline-block hover:underline">View documentation →</a>
+            </div>
+          </div>
+
+          <div class="api-card bg-gray-800 p-6 rounded-lg hover-scale">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">POST /api/simulation/decision</h3>
+                <p class="text-gray-300">Submit a decision within an active simulation</p>
+              </div>
+              <span class="bg-lime-900 text-lime-300 px-3 py-1 rounded text-sm">POST</span>
+            </div>
+            <div class="mt-4 text-sm text-gray-400">
+              <p>Accepts: Session ID, decision data, contextual information</p>
+              <a href="/docs/api/decisions" class="text-lime-400 text-xs mt-2 inline-block hover:underline">View documentation →</a>
+            </div>
+          </div>
+
+          <div class="api-card bg-gray-800 p-6 rounded-lg hover-scale">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">GET /api/analytics/results</h3>
+                <p class="text-gray-300">Retrieve analysis of simulation outcomes and decisions</p>
+              </div>
+              <span class="bg-emerald-900 text-emerald-300 px-3 py-1 rounded text-sm">GET</span>
+            </div>
+            <div class="mt-4 text-sm text-gray-400">
+              <p>Returns: Detailed analysis of cultural understanding, empathy metrics, and decision impacts</p>
+              <a href="/docs/api/analytics" class="text-lime-400 text-xs mt-2 inline-block hover:underline">View documentation →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="/docs/api" class="inline-block bg-gradient-to-r from-emerald-600 to-lime-500 text-white px-6 py-3 rounded-lg font-bold hover:opacity-90 transition shadow-lg">
+            Explore Complete API Documentation
+          </a>
+        </div>
+      </section>
+
+      <!-- Documentation Section -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-gray-900 rounded-xl p-8 shadow-md border border-gray-800 hover-scale">
+          <h2 class="text-2xl font-bold text-lime-400 mb-4">📚 Documentation</h2>
+          <p class="text-gray-300 mb-6">
+            Comprehensive guides, tutorials, and reference materials to help you get the most out of the Cultural Bridge Game.
+          </p>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-center">
+              <span class="text-lime-500 mr-2">→</span>
+              <a href="/docs/getting-started" class="text-gray-200 hover:text-white hover:underline">Getting Started Guide</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-lime-500 mr-2">→</span>
+              <a href="/docs/tutorials" class="text-gray-200 hover:text-white hover:underline">Tutorial Videos</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-lime-500 mr-2">→</span>
+              <a href="/docs/api" class="text-gray-200 hover:text-white hover:underline">API Reference</a>
+            </li>
+            <li class="flex items-center">
+              <span class="text-lime-500 mr-2">→</span>
+              <a href="/docs/examples" class="text-gray-200 hover:text-white hover:underline">Example Projects</a>
+            </li>
+          </ul>
+          <a href="/docs" class="inline-block bg-lime-600 hover:bg-lime-700 text-white px-4 py-2 rounded-md font-semibold transition">
+            Browse All Documentation →
+          </a>
+        </div>
+
+        <div id="demo" class="bg-gray-900 rounded-xl p-8 shadow-md border border-gray-800 hover-scale">
+          <h2 class="text-2xl font-bold text-emerald-400 mb-4">🎮 Try the Demo</h2>
+          <p class="text-gray-300 mb-6">
+            Experience a simplified version of our cultural simulation platform without creating an account.
+          </p>
+          <div class="bg-gray-800 p-4 rounded-lg mb-6 border border-gray-700">
+            <h3 class="font-semibold text-emerald-300 mb-2">Available Demo Scenarios:</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center">
+                <span class="text-emerald-500 mr-2">•</span>
+                <span>Traditional Wedding Customs Across Cultures</span>
+              </li>
+              <li class="flex items-center">
+                <span class="text-emerald-500 mr-2">•</span>
+                <span>Business Negotiation Styles: East vs. West</span>
+              </li>
+              <li class="flex items-center">
+                <span class="text-emerald-500 mr-2">•</span>
+                <span>Historical Peace Treaty Simulation</span>
+              </li>
+            </ul>
+          </div>
+          <a href="/demo" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md font-semibold transition">
+            Launch Interactive Demo →
+          </a>
+        </div>
+      </section>
+
+      <!-- Health Check Section -->
+      <section class="bg-gray-900 rounded-xl p-8 text-center shadow-md border border-gray-800">
+        <h2 class="text-2xl font-bold text-emerald-400 mb-4">🔍 System Status</h2>
+        <p class="text-gray-300 mb-6">
+          Check the current status of our API and simulation services.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
+          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div class="flex items-center justify-center mb-2">
+              <span class="h-3 w-3 rounded-full bg-green-500 mr-2"></span>
+              <h3 class="font-semibold">API Services</h3>
+            </div>
+            <p class="text-gray-400 text-sm">Operational</p>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div class="flex items-center justify-center mb-2">
+              <span class="h-3 w-3 rounded-full bg-green-500 mr-2"></span>
+              <h3 class="font-semibold">AI Engine</h3>
+            </div>
+            <p class="text-gray-400 text-sm">Operational</p>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <div class="flex items-center justify-center mb-2">
+              <span class="h-3 w-3 rounded-full bg-green-500 mr-2"></span>
+              <h3 class="font-semibold">Database</h3>
+            </div>
+            <p class="text-gray-400 text-sm">Operational</p>
+          </div>
+        </div>
+        <a href="/health" class="inline-block bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition border border-gray-700">
+          View Detailed Health Dashboard →
+        </a>
+      </section>
+    </main>
+
+    <!-- CTA Banner -->
+    <section class="bg-gradient-to-r from-emerald-600 to-lime-500 py-16 px-4">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Bridge Cultural Divides?</h2>
+        <p class="text-white text-lg max-w-3xl mx-auto mb-8 opacity-90">
+          Join thousands of educators, diplomats, and organizations using our platform to foster global understanding.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="/signup" class="bg-white text-emerald-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition shadow-lg">
+            Create Free Account
+          </a>
+          <a href="/contact" class="bg-transparent text-white px-8 py-3 rounded-lg font-bold hover:bg-emerald-700 transition border-2 border-white">
+            Contact Sales
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 class="text-white font-bold mb-4">Cultural Bridge Game</h3>
+            <p class="text-sm">
+              AI-powered cultural simulations designed to foster empathy and global understanding.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-4">Resources</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/docs" class="hover:text-white hover:underline">Documentation</a></li>
+              <li><a href="/api" class="hover:text-white hover:underline">API Reference</a></li>
+              <li><a href="/tutorials" class="hover:text-white hover:underline">Tutorials</a></li>
+              <li><a href="/blog" class="hover:text-white hover:underline">Blog</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-4">Company</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/about" class="hover:text-white hover:underline">About Us</a></li>
+              <li><a href="/careers" class="hover:text-white hover:underline">Careers</a></li>
+              <li><a href="/contact" class="hover:text-white hover:underline">Contact</a></li>
+              <li><a href="/press" class="hover:text-white hover:underline">Press Kit</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-4">Legal</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/terms" class="hover:text-white hover:underline">Terms of Service</a></li>
+              <li><a href="/privacy" class="hover:text-white hover:underline">Privacy Policy</a></li>
+              <li><a href="/cookies" class="hover:text-white hover:underline">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-gray-800 text-center text-sm">
+          &copy; 2025 Cultural Bridge Game — Designed with ❤️ for global empathy and understanding.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Feature component -->
+    <script>
+      function Feature({ icon, title, desc }) {
+        document.write(`
+          <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-800 hover:border-lime-400 transition hover-scale">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-3xl">${icon}</span>
+              <h3 class="text-xl font-bold text-white">${title}</h3>
+            </div>
+            <p class="text-gray-400">${desc}</p>
+          </div>
+        `);
+      }
+    </script>
+  </body>
+</html>
