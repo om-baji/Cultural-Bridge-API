@@ -57,6 +57,14 @@ class DebatePromptResponse(BaseModel):
     prompt: str
     timestamp: str
 
+class DebateMessageRequest(BaseModel):
+    prompt: str
+    message: str
+    history: List[Dict[str, str]]
+
+class DebateMessageResponse(BaseModel):
+    content: str
+    timestamp: str
 
 class DebateEvaluationResponse(BaseModel):
     evaluation: str
@@ -97,7 +105,7 @@ class KalkiScore(BaseModel):
     historical_accuracy: int
     ethical_balance: int
     total_score: int
-
+    feedback: Optional[Dict[str, str]]
 
 class ConflictRequest(BaseModel):
     conflict_type: ConflictType
@@ -119,3 +127,11 @@ class ConflictResponse(BaseModel):
     metadata: Dict
     session_id: str
     kalki_score: Optional[KalkiScore] = None
+
+
+class ResultsResponse(BaseModel):
+    total_score: int
+    individual_scores: KalkiScore
+    performance_summary: str
+    improvement_suggestions: List[str]
+
