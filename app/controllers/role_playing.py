@@ -32,7 +32,6 @@ async def get_embeddings(text: str, client: Any = None):
 
 async def generate_role_play(request: RolePlayRequest, client: Any):
     try:
-        # Set up system prompt to guide AI behavior
         system_prompt = (
             f"You are role-playing as a {request.role} from the {request.culture} culture, "
             f"during the {request.era} era. You respond based on that role only. "

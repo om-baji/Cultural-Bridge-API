@@ -3,7 +3,6 @@ from typing import Optional, Dict, Any, List
 
 from pydantic import Field, BaseModel, field_validator
 
-
 class StoryRequest(BaseModel):
     culture: str = Field(..., min_length=2)
     theme: Optional[str] = None

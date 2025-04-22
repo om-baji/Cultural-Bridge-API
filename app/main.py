@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Story Generator API", version="1.0")
 
-templates = Jinja2Templates(directory="C:/Users/0m/PycharmProjects/EDAI-4/app/templates")
+templates = Jinja2Templates(directory="templates")
 
 app.add_middleware(
     CORSMiddleware,
