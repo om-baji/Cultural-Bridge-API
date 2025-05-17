@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import HTTPException, Depends
 from typing import Any, List, Dict
 import asyncio
@@ -93,48 +95,80 @@ async def process_debate_message(
         raise HTTPException(status_code=500, detail=f"Failed to process debate message: {str(e)}")
 
 
-async def evaluate_debate_response(request: DebateRequest,
-                                   client: Any ) -> DebateEvaluationResponse:
+async def evaluate_debate_response(request: DebateRequest, client: Any) -> DebateEvaluationResponse:
     try:
-        response_embedding = await get_embeddings(request.response, client)
+        response_embedding = await get_embeddings(request.user_response, client)
 
-        rag_results = debate_collection.query(
+        rag_results = await asyncio.to_thread(
+            debate_collection.query,
             query_embeddings=[response_embedding],
             n_results=3,
             include=["documents", "metadatas"]
         )
 
         rag_context = ""
-        if rag_results and rag_results["documents"] and rag_results["documents"][0]:
+        if rag_results.get("documents") and rag_results["documents"][0]:
             rag_context = "Here are reference arguments for context:\n"
             for i, doc in enumerate(rag_results["documents"][0]):
                 rag_context += f"Example {i + 1}:\n{doc[:400]}...\n\n"
 
         prompt = (
             f"Debate Prompt:\n{request.prompt}\n\n"
-            f"Full Debate Conversation:\n{request.response}\n\n"
+            f"Debate Response:\n{request.user_response}\n\n"
             f"{rag_context}"
-            f"Evaluate the quality of arguments in this debate based on:\n"
+            f"Evaluate the debate based on:\n"
             f"1. Historical accuracy\n"
             f"2. Ethical reasoning\n"
             f"3. Cultural empathy\n"
             f"4. Logical structure\n"
             f"5. Evidence-based reasoning\n\n"
-            f"For each participant in the debate, provide strengths and areas for improvement. "
-            f"Give specific examples from the debate to support your evaluation. "
-            f"Conclude with overall feedback and suggestions for more effective debate techniques."
+            f"Give a short evaluation.\n"
+            f"Then provide a score from 0-10 for each criteria.\n"
+            f"Finally, suggest one improvement idea.\n\n"
+            f"Format your answer exactly as:\n"
+            f"Evaluation: <text>\n"
+            f"Scores:\n"
+            f"Historical accuracy: <number>\n"
+            f"Ethical reasoning: <number>\n"
+            f"Cultural empathy: <number>\n"
+            f"Logical structure: <number>\n"
+            f"Evidence-based reasoning: <number>\n"
+            f"Suggestion: <text>"
         )
 
         messages = [{"role": "user", "content": prompt}]
+
         response = await asyncio.to_thread(
             client.chat,
             model="llama3.2:latest",
             messages=messages,
-            options={"temperature": 0.7}
+            options={"temperature": 0.4}
         )
 
+        content = response["message"]["content"]
+
+        lines = content.splitlines()
+        eval_text = ""
+        scores = {}
+        suggestion = None
+
+        mode = None
+        for line in lines:
+            if line.lower().startswith("evaluation:"):
+                mode = "evaluation"
+                eval_text = line.split(":", 1)[1].strip()
+            elif line.lower().startswith("scores:"):
+                mode = "scores"
+            elif mode == "scores" and ":" in line:
+                key, val = line.split(":", 1)
+                scores[key.strip().lower()] = float(val.strip())
+            elif line.lower().startswith("suggestion:"):
+                suggestion = line.split(":", 1)[1].strip()
+
         return DebateEvaluationResponse(
-            evaluation=response["message"]["content"].strip(),
+            evaluation=eval_text,
+            scores=scores,
+            suggestions=suggestion,
             timestamp=str(datetime.datetime.now())
         )
     except Exception as e:

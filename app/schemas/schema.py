@@ -20,7 +20,10 @@ class StoryResponse(BaseModel):
     story: str
     character_count: int
     language: str
-    metadata: Dict[str, Any]
+    metadata: Dict
+    used_rag: bool
+    reference_count: int
+    actions: Optional[List[str]] = None
 
 class Response(BaseModel):
     success: bool
@@ -28,14 +31,14 @@ class Response(BaseModel):
     timestamp: str
 
 class RolePlayRequest(BaseModel):
-    culture: str
     role: str
+    culture: str
     era: str
     tone: str
     language: str
     include_emotion: bool
-    chat_history: List[Dict[str, str]]  # [{"user": "Hi!", "ai": "Hello, traveler!"}, ...]
-    user_input: str  # current user message
+    user_input: str
+    chat_history: List[Dict[str, str]]
 
 class SentimentRequest(BaseModel):
     story : str
@@ -133,4 +136,15 @@ class ResultsResponse(BaseModel):
     individual_scores: KalkiScore
     performance_summary: str
     improvement_suggestions: List[str]
+
+class EvaluationRequest(BaseModel):
+    chat_history: List[Dict[str, str]]  # List of {"user": "message", "ai": "response"} dictionaries
+
+class EvaluationResponse(BaseModel):
+    empathy_score: int
+    diplomatic_skill_score: int
+    historical_accuracy_score: int
+    ethical_balance_score: int
+    total_score: int
+
 
